@@ -1,0 +1,28 @@
+cd /usr/local/src
+wget -N http://mirrors.cnnic.cn/apache/zookeeper/zookeeper-3.4.6/zookeeper-3.4.6.tar.gz
+tar -zxf zookeeper-3.4.6.tar.gz
+mv zookeeper-3.4.6 /usr/local/zookeeper3
+mkdir /usr/local/zookeeper3/data
+mkdir /usr/local/zookeeper3/log
+echo 'tickTime=2000' > /usr/local/zookeeper3/conf/zoo.cfg
+echo 'initLimit=10' >> /usr/local/zookeeper3/conf/zoo.cfg
+echo 'syncLimit=5' >> /usr/local/zookeeper3/conf/zoo.cfg
+echo 'dataDir=/usr/local/zookeeper3/data' >> /usr/local/zookeeper3/conf/zoo.cfg
+echo 'dataLogDir=/usr/local/zookeeper3/log' >> /usr/local/zookeeper3/conf/zoo.cfg
+echo 'clientPort=2181' >> /usr/local/zookeeper3/conf/zoo.cfg
+echo 'server.111=192.168.0.111:2888:3888' >> /usr/local/zookeeper3/conf/zoo.cfg 
+echo 'server.112=192.168.0.112:2888:3888' >> /usr/local/zookeeper3/conf/zoo.cfg
+echo 'server.113=192.168.0.113:2888:3888' >> /usr/local/zookeeper3/conf/zoo.cfg
+
+echo 'export PATH=$PATH:/usr/local/zookeeper3/bin' >> /etc/profile
+source /etc/profile
+
+echo '111' > /usr/local/zookeeper3/data/myid
+echo '112' > /usr/local/zookeeper3/data/myid
+echo '113' > /usr/local/zookeeper3/data/myid
+
+zkServer.sh start
+zkServer.sh status
+zkServer.sh stop
+
+

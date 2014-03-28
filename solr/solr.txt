@@ -1,0 +1,8 @@
+cd /usr/local/src
+wget -N http://mirrors.cnnic.cn/apache/lucene/solr/4.7.0/solr-4.7.0.tgz
+tar -zxf solr-4.7.0.tgz
+mkdir -p /usr/local/solr/webapps
+cd /usr/local/solr/webapps
+jar -xf /usr/local/src/solr-4.7.0/example/webapps/solr.war
+cp /usr/local/src/solr-4.7.0/example/lib/ext/*.jar /usr/local/solr/webapps/WEB-INF/lib
+

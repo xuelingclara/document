@@ -1,0 +1,14 @@
+选择星期区间：
+	$("#datepicker1,#datepicker2").datepicker({
+		dateFormat:'yy-mm-dd',
+		monthNamesShort: ['01','02','03','04','05','06','07','08','09','10','11','12'],
+		showMonthAfterYear: true,
+		onSelect: function(selectedDate, inst) {
+			var date = $(this).datepicker('getDate');
+            beginDate = new Date(date.getFullYear(), date.getMonth(), date.getDate() - date.getDay());
+            endDate = new Date(date.getFullYear(), date.getMonth(), date.getDate() - date.getDay() + 6);
+            var dateFormat = inst.settings.dateFormat || $.datepicker._defaults.dateFormat;
+            $('#datepicker1').val($.datepicker.formatDate( dateFormat, beginDate, inst.settings ));
+            $('#datepicker2').val($.datepicker.formatDate( dateFormat, endDate, inst.settings ));
+		}
+	});

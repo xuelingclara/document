@@ -1,0 +1,9 @@
+cd /usr/local/src
+wget -N http://mirrors.hust.edu.cn/apache//ant/binaries/apache-ant-1.9.2-bin.tar.gz
+tar -zxvf apache-ant-1.9.2-bin.tar.gz
+mv apache-ant-1.9.2 /usr/local/ant
+echo "export PATH=$PATH:/usr/local/ant/bin" >> /etc/profile
+source /etc/profile
+
+2.增加代理
+<setproxy socksproxyhost="127.0.0.1" socksproxyport="7777" taskname="target1,target2" />

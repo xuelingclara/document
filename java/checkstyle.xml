@@ -1,0 +1,1074 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE module PUBLIC "-//Puppy Crawl//DTD Check Configuration 1.3//EN" "http://www.puppycrawl.com/dtds/configuration_1_3.dtd">
+
+<!-- This configuration file was written by the eclipse-cs plugin configuration 
+	editor -->
+<!-- Checkstyle-Configuration: ezcom-standard Description: none -->
+<module name="Checker">
+	<property name="severity" value="warning" />
+	<module name="TreeWalker">
+		<module name="AvoidStarImport">
+			<metadata name="net.sf.eclipsecs.core.comment" value="禁止 import *" />
+			<message key="import.avoidStar"
+				value="Imports-&gt; Using the ''.*'' form of import should be avoided - {0}." />
+		</module>
+		<module name="AvoidStaticImport">
+			<metadata name="net.sf.eclipsecs.core.comment" value="禁止 静态导入" />
+			<message key="import.avoidStatic"
+				value="Imports-&gt; Using a static member import should be avoided - {0}." />
+		</module>
+		<module name="IllegalImport">
+			<metadata name="net.sf.eclipsecs.core.comment" value="禁止 导入被限制的包" />
+			<message key="import.illegal"
+				value="Imports-&gt; Import from illegal package - {0}." />
+		</module>
+		<module name="ImportOrder">
+			<metadata name="net.sf.eclipsecs.core.comment" value="限制 import 包名 按字母顺序排列" />
+			<property name="severity" value="ignore" />
+			<message key="import.ordering" value="Imports-&gt; Wrong order for ''{0}'' import." />
+			<message key="import.separation"
+				value="Imports-&gt; ''{0}'' should be separated from previous imports." />
+			<metadata name="net.sf.eclipsecs.core.lastEnabledSeverity"
+				value="inherit" />
+		</module>
+		<module name="RedundantImport">
+			<metadata name="net.sf.eclipsecs.core.comment" value="禁止 不需要的导入" />
+			<message key="import.same"
+				value="Imports-&gt; Redundant import from the same package - {0}." />
+			<message key="import.duplicate"
+				value="Imports-&gt; Duplicate import to line {0,number,integer} - {1}." />
+			<message key="import.lang"
+				value="Imports-&gt; Redundant import from the java.lang package - {0}." />
+		</module>
+		<module name="UnusedImports">
+			<metadata name="net.sf.eclipsecs.core.comment" value="禁止 未使用的导入" />
+			<message key="import.unused" value="Imports-&gt; Unused import - {0}." />
+		</module>
+		<module name="ImportControl">
+			<metadata name="net.sf.eclipsecs.core.comment" value="不明白" />
+			<property name="severity" value="ignore" />
+			<message key="import.control.unknown.pkg"
+				value="Imports-&gt; Import control file does not handle this package." />
+			<message key="import.control.missing.file" value="Imports-&gt; Missing an import control file." />
+			<message key="import.control.disallowed" value="Imports-&gt; Disallowed import - {0}." />
+			<metadata name="net.sf.eclipsecs.core.lastEnabledSeverity"
+				value="inherit" />
+		</module>
+		<module name="AnonInnerLength">
+			<metadata name="net.sf.eclipsecs.core.comment" value="限制 匿名内部类的代码行数" />
+			<message key="maxLen.anonInner"
+				value="Size Violations-&gt; Anonymous inner class length is {0,number,integer} lines (max allowed is {1,number,integer})." />
+		</module>
+		<module name="ExecutableStatementCount">
+			<metadata name="net.sf.eclipsecs.core.comment" value="限制 可执行代码片段的行数(不含空行等)" />
+			<property name="max" value="50" />
+			<property name="tokens"
+				value="INSTANCE_INIT,STATIC_INIT,METHOD_DEF,CTOR_DEF" />
+			<message key="executableStatementCount"
+				value="Size Violations-&gt; Executable statement count is {0,number,integer} (max allowed is {1,number,integer})." />
+		</module>
+		<module name="LineLength">
+			<metadata name="net.sf.eclipsecs.core.comment" value="限制 单行的最大字符数" />
+			<property name="max" value="150" />
+			<property name="tabWidth" value="4" />
+			<message key="maxLineLen"
+				value="Size Violations-&gt; Line is longer than {0,number,integer} characters (found {1,number,integer})." />
+		</module>
+		<module name="MethodLength">
+			<metadata name="net.sf.eclipsecs.core.comment"
+				value="限制 方法与构造的最大行数(与Executable Statement Size有重复)" />
+			<property name="max" value="50" />
+			<property name="countEmpty" value="false" />
+			<message key="maxLen.method"
+				value="Size Violations-&gt; Method length is {0,number,integer} lines (max allowed is {1,number,integer})." />
+		</module>
+		<module name="ParameterNumber">
+			<metadata name="net.sf.eclipsecs.core.comment" value="限制 方法与构造中参数最大个数" />
+			<property name="max" value="5" />
+			<property name="tokens" value="METHOD_DEF" />
+			<message key="maxParam"
+				value="Size Violations-&gt; More than {0,number,integer} parameters (found {1,number,integer})." />
+		</module>
+		<module name="OuterTypeNumber">
+			<metadata name="net.sf.eclipsecs.core.comment" value="限制 单个java文件最大class个数(内部类除外)" />
+			<message key="maxOuterTypes"
+				value="Size Violations-&gt; Outer types defined is {0,number,integer} (max allowed is {1,number,integer})." />
+		</module>
+		<module name="MethodCount">
+			<metadata name="net.sf.eclipsecs.core.comment" value="限制 单个类中方法最大个数" />
+			<property name="maxPrivate" value="10" />
+			<property name="maxPackage" value="10" />
+			<property name="maxProtected" value="10" />
+			<property name="maxPublic" value="70" />
+			<message key="too.many.privateMethods"
+				value="Size Violations-&gt; Number of private methods is {0,number,integer} (max allowed is {1,number,integer})." />
+			<message key="too.many.packageMethods"
+				value="Size Violations-&gt; Number of package methods is {0,number,integer} (max allowed is {1,number,integer})." />
+			<message key="too.many.protectedMethods"
+				value="Size Violations-&gt; Number of protected methods is {0,number,integer} (max allowed is {1,number,integer})." />
+			<message key="too.many.publicMethods"
+				value="Size Violations-&gt; Number of public methods is {0,number,integer} (max allowed is {1,number,integer})." />
+			<message key="too.many.methods"
+				value="Size Violations-&gt; Total number of methods is {0,number,integer} (max allowed is {1,number,integer})." />
+		</module>
+		<module name="AvoidNestedBlocks">
+			<metadata name="net.sf.eclipsecs.core.comment" value="禁止 无意义的块嵌套" />
+			<message key="block.nested" value="Blocks-&gt; Avoid nested blocks." />
+		</module>
+		<module name="EmptyBlock">
+			<metadata name="net.sf.eclipsecs.core.comment" value="禁止 空代码块" />
+			<message key="block.empty" value="Blocks-&gt; Empty {0} block." />
+			<message key="block.noStmt" value="Blocks-&gt; Must have at least one statement." />
+		</module>
+		<module name="LeftCurly">
+			<metadata name="net.sf.eclipsecs.core.comment" value="限制 代码块 { 的位置" />
+			<property name="maxLineLength" value="150" />
+			<message key="line.new" value="Blocks-&gt; ''{0}'' should be on a new line." />
+			<message key="line.previous"
+				value="Blocks-&gt; ''{0}'' should be on the previous line." />
+		</module>
+		<module name="NeedBraces">
+			<metadata name="net.sf.eclipsecs.core.comment" value="限制 代码块必需使用{}" />
+			<message key="needBraces"
+				value="Blocks-&gt; ''{0}'' construct must use '''{}'''s." />
+		</module>
+		<module name="RightCurly">
+			<metadata name="net.sf.eclipsecs.core.comment" value="限制 代码块 } 的位置" />
+			<message key="line.alone" value="Blocks-&gt; ''{0}'' should be alone on a line." />
+			<message key="line.new" value="Blocks-&gt; ''{0}'' should be on a new line." />
+			<message key="line.same"
+				value="Blocks-&gt; ''{0}'' should be on the same line." />
+		</module>
+		<module name="AvoidInlineConditionals">
+			<metadata name="net.sf.eclipsecs.core.comment" value="禁止 条件表达式内联 如: true ? 1 : 2" />
+			<property name="severity" value="ignore" />
+			<message key="inline.conditional.avoid"
+				value="Coding Problems-&gt; Avoid inline conditionals." />
+			<metadata name="net.sf.eclipsecs.core.lastEnabledSeverity"
+				value="inherit" />
+		</module>
+		<module name="CovariantEquals">
+			<metadata name="net.sf.eclipsecs.core.comment" value="限制 equals() 确实覆盖了object.equals(Object obj)" />
+			<message key="covariant.equals"
+				value="Coding Problems-&gt; covariant equals without overriding equals(java.lang.Object)." />
+		</module>
+		<module name="DefaultComesLast">
+			<metadata name="net.sf.eclipsecs.core.comment" value="限制 switch语句块中,default的位置必需在最后" />
+			<message key="default.comes.last"
+				value="Coding Problems-&gt; Default should be last label in the switch." />
+		</module>
+		<module name="DeclarationOrder">
+			<metadata name="net.sf.eclipsecs.core.comment" value="限制 类的组成顺序：静态变量(常量)，成员变量，构造，方法" />
+			<property name="severity" value="ignore" />
+			<message key="declaration.order.constructor"
+				value="Coding Problems-&gt; Constructor definition in wrong order." />
+			<message key="declaration.order.method"
+				value="Coding Problems-&gt; Method definition in wrong order." />
+			<message key="declaration.order.instance"
+				value="Coding Problems-&gt; Instance variable definition in wrong order." />
+			<message key="declaration.order.access"
+				value="Coding Problems-&gt; Variable access definition in wrong order." />
+			<message key="declaration.order.static"
+				value="Coding Problems-&gt; Static variable definition in wrong order." />
+			<metadata name="net.sf.eclipsecs.core.lastEnabledSeverity"
+				value="inherit" />
+		</module>
+		<module name="EmptyStatement">
+			<metadata name="net.sf.eclipsecs.core.comment" value="禁止 空语句 ;" />
+			<message key="empty.statement" value="Coding Problems-&gt; Empty statement." />
+		</module>
+		<module name="EqualsAvoidNull">
+			<metadata name="net.sf.eclipsecs.core.comment" value="禁止 可能为 null.equals(&amp;quot;&amp;quot;)的调用" />
+			<message key="equals.avoid.null"
+				value="Coding Problems-&gt; String literal expressions should be on the left side of an equals comparison." />
+		</module>
+		<module name="EqualsHashCode">
+			<metadata name="net.sf.eclipsecs.core.comment" value="限制 重写equals() 必需重写hashCode()" />
+			<message key="equals.noHashCode"
+				value="Coding Problems-&gt; Definition of ''equals()'' without corresponding definition of ''hashCode()''." />
+		</module>
+		<module name="ExplicitInitialization">
+			<metadata name="net.sf.eclipsecs.core.comment" value="不用 java编译时已明确要求必需初始化" />
+			<property name="severity" value="ignore" />
+			<message key="explicit.init"
+				value="Coding Problems-&gt; Variable ''{0}'' explicitly initialized to ''{1}'' (default value for its type)." />
+			<metadata name="net.sf.eclipsecs.core.lastEnabledSeverity"
+				value="inherit" />
+		</module>
+		<module name="FallThrough">
+			<metadata name="net.sf.eclipsecs.core.comment"
+				value="限制 switch中的case在没有break或return等情况下，必须有注释(//fall through)" />
+			<message key="fall.through.last"
+				value="Coding Problems-&gt; Fall through from the last branch of the switch statement." />
+			<message key="fall.through"
+				value="Coding Problems-&gt; Fall through from previous branch of the switch statement." />
+		</module>
+		<module name="FinalLocalVariable">
+			<metadata name="net.sf.eclipsecs.core.comment" value="限制 参数与变量 未修改初始值时,必需定义为final" />
+			<property name="tokens" value="PARAMETER_DEF,VARIABLE_DEF" />
+			<message key="final.variable"
+				value="Coding Problems-&gt; Variable ''{0}'' should be declared final." />
+		</module>
+		<module name="HiddenField">
+			<metadata name="net.sf.eclipsecs.core.comment" value="禁止 参数名或变量名 隐藏成员变量(设置内除外)" />
+			<property name="ignoreConstructorParameter" value="true" />
+			<property name="ignoreSetter" value="true" />
+			<message key="hidden.field" value="Coding Problems-&gt; ''{0}'' hides a field." />
+		</module>
+		<module name="IllegalInstantiation">
+			<metadata name="net.sf.eclipsecs.core.comment" value="禁止 不合理的实例化,此处建议使用工厂方法" />
+			<property name="classes"
+				value="java.lang.Boolean,java.lang.Byte,java.lang.Short,java.lang.Integer,java.lang.Long,java.lang.Character" />
+			<message key="instantiation.avoid"
+				value="Coding Problems-&gt; Instantiation of {0} should be avoided." />
+		</module>
+		<module name="IllegalCatch">
+			<metadata name="net.sf.eclipsecs.core.comment" value="禁止 扩大范围的异常捕获" />
+			<message key="illegal.catch"
+				value="Coding Problems-&gt; Catching ''{0}'' is not allowed." />
+		</module>
+		<module name="IllegalThrows">
+			<metadata name="net.sf.eclipsecs.core.comment" value="禁止 不合理的异常抛出" />
+			<message key="illegal.throw"
+				value="Coding Problems-&gt; Throwing ''{0}'' is not allowed." />
+		</module>
+		<module name="IllegalToken">
+			<metadata name="net.sf.eclipsecs.core.comment" value="禁止 使用某些操作符,关键字,定义等杂项" />
+			<property name="tokens" value="LITERAL_SWITCH,LITERAL_CASE,LITERAL_DEFAULT" />
+		</module>
+		<module name="IllegalTokenText">
+			<metadata name="net.sf.eclipsecs.core.comment" value="不明白" />
+			<property name="severity" value="ignore" />
+			<message key="illegal.token.text"
+				value="Coding Problems-&gt; Token text matches the illegal pattern ''{0}''." />
+			<metadata name="net.sf.eclipsecs.core.lastEnabledSeverity"
+				value="inherit" />
+		</module>
+		<module name="IllegalType">
+			<metadata name="net.sf.eclipsecs.core.comment" value="不明白" />
+			<property name="severity" value="ignore" />
+			<property name="tokens" value="METHOD_DEF,PARAMETER_DEF,VARIABLE_DEF" />
+			<message key="illegal.type"
+				value="Coding Problems-&gt; Declaring variables, return values or parameters of type ''{0}'' is not allowed." />
+			<metadata name="net.sf.eclipsecs.core.lastEnabledSeverity"
+				value="inherit" />
+		</module>
+		<module name="InnerAssignment">
+			<metadata name="net.sf.eclipsecs.core.comment" value="禁止 子表达式中有赋值操作" />
+			<message key="assignment.inner.avoid"
+				value="Coding Problems-&gt; Inner assignments should be avoided." />
+		</module>
+		<module name="JUnitTestCase">
+			<metadata name="net.sf.eclipsecs.core.comment" value="限制 Junit 的TestCase的setUp()与tearDown()" />
+			<property name="severity" value="ignore" />
+			<message key="junit.method.parameters"
+				value="Coding Problems-&gt; The method ''{0}'' must be declared with no parameters." />
+			<message key="junit.method.protected.or.public"
+				value="Coding Problems-&gt; The method ''{0}'' must be public or protected." />
+			<message key="junit.method.name"
+				value="Coding Problems-&gt; The method ''{0}'' should be named ''{1}''." />
+			<message key="junit.method.static"
+				value="Coding Problems-&gt; The method ''{0}'' shouldn''t be static." />
+			<message key="junit.method.public.and.static"
+				value="Coding Problems-&gt; The method ''{0}'' must be declared static." />
+			<message key="junit.method.return.type"
+				value="Coding Problems-&gt; The method ''{0}'' must be declared with a {1} return type." />
+			<metadata name="net.sf.eclipsecs.core.lastEnabledSeverity"
+				value="inherit" />
+		</module>
+		<module name="MagicNumber">
+			<metadata name="net.sf.eclipsecs.core.comment" value="禁止 魔数，数值应该在常量中定义" />
+			<message key="magic.number"
+				value="Coding Problems-&gt; ''{0}'' is a magic number." />
+		</module>
+		<module name="MissingCtor">
+			<metadata name="net.sf.eclipsecs.core.comment" value="限制 必需显式定义构造函数" />
+			<message key="missing.ctor"
+				value="Coding Problems-&gt; Class should define a constructor." />
+		</module>
+		<module name="MissingSwitchDefault">
+			<metadata name="net.sf.eclipsecs.core.comment" value="限制 switch语句块中必需要有default语句" />
+			<message key="missing.switch.default"
+				value="Coding Problems-&gt; switch without &quot;default&quot; clause." />
+		</module>
+		<module name="ModifiedControlVariable">
+			<metadata name="net.sf.eclipsecs.core.comment" value="禁止 循环体内修改循环控制变量" />
+		</module>
+		<module name="MultipleStringLiterals">
+			<metadata name="net.sf.eclipsecs.core.comment" value="限制 单个文件中相同字符串出现次数" />
+			<message key="multiple.string.literal"
+				value="Coding Problems-&gt; The String {0} appears {1} times in the file." />
+		</module>
+		<module name="MultipleVariableDeclarations">
+			<metadata name="net.sf.eclipsecs.core.comment" value="禁止 一行定义多个变量" />
+			<message key="multiple.variable.declarations.comma"
+				value="Coding Problems-&gt; Each variable declaration must be in its own statement." />
+			<message key="multiple.variable.declarations"
+				value="Coding Problems-&gt; Only one variable definition per line allowed." />
+		</module>
+		<module name="NestedForDepth">
+			<metadata name="net.sf.eclipsecs.core.comment" value="限制 for语句块的嵌套最大深度" />
+			<message key="nested.for.depth"
+				value="Coding Problems-&gt; Nested for depth is {0,number,integer} (max allowed is {1,number,integer})." />
+		</module>
+		<module name="NestedIfDepth">
+			<metadata name="net.sf.eclipsecs.core.comment" value="限制 if 语句块最大嵌套深度" />
+			<message key="nested.if.depth"
+				value="Coding Problems-&gt; Nested if-else depth is {0,number,integer} (max allowed is {1,number,integer})." />
+		</module>
+		<module name="NestedTryDepth">
+			<metadata name="net.sf.eclipsecs.core.comment" value="限制 try 语句块的最大嵌套深度" />
+			<message key="nested.try.depth"
+				value="Coding Problems-&gt; Nested try depth is {0,number,integer} (max allowed is {1,number,integer})." />
+		</module>
+		<module name="NoClone">
+			<metadata name="net.sf.eclipsecs.core.comment" value="禁止 重写object.clone()" />
+			<property name="severity" value="ignore" />
+			<message key="avoid.clone.method" value="Coding Problems-&gt; Avoid using clone method." />
+			<metadata name="net.sf.eclipsecs.core.lastEnabledSeverity"
+				value="inherit" />
+		</module>
+		<module name="NoFinalizer">
+			<metadata name="net.sf.eclipsecs.core.comment" value="禁止 重写object.finalizer()" />
+			<message key="avoid.finalizer.method"
+				value="Coding Problems-&gt; Avoid using finalizer method." />
+		</module>
+		<module name="PackageDeclaration">
+			<metadata name="net.sf.eclipsecs.core.comment" value="限制 类,接口等必需定义在包内" />
+			<message key="missing.package.declaration"
+				value="Coding Problems-&gt; Missing package declaration." />
+			<message key="package.dir.mismatch"
+				value="Coding Problems-&gt; Package declaration does not match directory ''{0}''." />
+		</module>
+		<module name="ParameterAssignment">
+			<metadata name="net.sf.eclipsecs.core.comment" value="禁止 对参数重新赋值" />
+			<message key="parameter.assignment"
+				value="Coding Problems-&gt; Assignment of parameter ''{0}'' is not allowed." />
+		</module>
+		<module name="RedundantThrows">
+			<metadata name="net.sf.eclipsecs.core.comment" value="禁止 多余,重复的异常抛出" />
+			<property name="suppressLoadErrors" value="true" />
+			<message key="redundant.throws.classInfo"
+				value="Coding Problems-&gt; Unable to get class information for {0}." />
+			<message key="redundant.throws.duplicate"
+				value="Coding Problems-&gt; Redundant throws: ''{0}'' listed more then one time." />
+			<message key="redundant.throws.subclass"
+				value="Coding Problems-&gt; Redundant throws: ''{0}'' is subclass of ''{1}''." />
+			<message key="redundant.throws.unchecked"
+				value="Coding Problems-&gt; Redundant throws: ''{0}'' is unchecked exception." />
+		</module>
+		<module name="RequireThis">
+			<metadata name="net.sf.eclipsecs.core.comment" value="限制 引用本类的成员变量,方法 时需要this" />
+			<message key="require.this.method"
+				value="Coding Problems-&gt; Method call to ''{0}'' needs &quot;this.&quot;." />
+			<message key="require.this.variable"
+				value="Coding Problems-&gt; Reference to instance variable ''{0}'' needs &quot;this.&quot;." />
+			<message key="require.this.unfound.variable"
+				value="Coding Problems-&gt; Unable find where ''{0}'' is declared." />
+		</module>
+		<module name="ReturnCount">
+			<metadata name="net.sf.eclipsecs.core.comment" value="限制 return的最大数量" />
+			<property name="max" value="5" />
+			<message key="return.count"
+				value="Coding Problems-&gt; Return count is {0,number,integer} (max allowed is {1,number,integer})." />
+		</module>
+		<module name="SimplifyBooleanExpression">
+			<metadata name="net.sf.eclipsecs.core.comment" value="禁止 boolean表达式复杂" />
+			<message key="simplify.expression"
+				value="Coding Problems-&gt; Expression can be simplified." />
+		</module>
+		<module name="SimplifyBooleanReturn">
+			<metadata name="net.sf.eclipsecs.core.comment" value="禁止 boolean表达式返回值复杂" />
+			<message key="simplify.boolreturn"
+				value="Coding Problems-&gt; Conditional logic can be removed." />
+		</module>
+		<module name="StringLiteralEquality">
+			<metadata name="net.sf.eclipsecs.core.comment" value="禁止 String判断相等使用==或!=, 必需使用equails()" />
+			<message key="string.literal.equality"
+				value="Coding Problems-&gt; Literal Strings should be compared using equals(), not ''{0}''." />
+		</module>
+		<module name="SuperClone">
+			<metadata name="net.sf.eclipsecs.core.comment" value="限制 子类重写clone()必需调用super.clone()" />
+			<message key="missing.super.call"
+				value="Coding Problems-&gt; Method ''{0}'' should call ''super.{0}''." />
+		</module>
+		<module name="SuperFinalize">
+			<metadata name="net.sf.eclipsecs.core.comment" value="限制 子类重写finalize()必需调用super.finalize()" />
+			<message key="missing.super.call"
+				value="Coding Problems-&gt; Method ''{0}'' should call ''super.{0}''." />
+		</module>
+		<module name="ArrayTrailingComma">
+			<metadata name="net.sf.eclipsecs.core.comment" value="限制 数组用多行初始化时 尾部要有逗号" />
+			<message key="array.trailing.comma"
+				value="Coding Problems-&gt; Array should contain trailing comma." />
+		</module>
+		<module name="UnnecessaryParentheses">
+			<metadata name="net.sf.eclipsecs.core.comment" value="禁止 不必要的括号" />
+			<property name="severity" value="ignore" />
+			<message key="unnecessary.paren.assign"
+				value="Coding Problems-&gt; Unnecessary parentheses around assignment right-hand side." />
+			<message key="unnecessary.paren.ident"
+				value="Coding Problems-&gt; Unnecessary parentheses around identifier ''{0}''." />
+			<message key="unnecessary.paren.literal"
+				value="Coding Problems-&gt; Unnecessary parentheses around literal ''{0}''." />
+			<message key="unnecessary.paren.return"
+				value="Coding Problems-&gt; Unnecessary parentheses around return value." />
+			<message key="unnecessary.paren.expr"
+				value="Coding Problems-&gt; Unnecessary parentheses around expression." />
+			<message key="unnecessary.paren.string"
+				value="Coding Problems-&gt; Unnecessary parentheses around string {0}." />
+			<metadata name="net.sf.eclipsecs.core.lastEnabledSeverity"
+				value="inherit" />
+		</module>
+		<module name="OneStatementPerLine">
+			<metadata name="net.sf.eclipsecs.core.comment" value="禁止 一行有多句代码" />
+			<message key="multiple.statements.line"
+				value="Coding Problems-&gt; Only one statement per line allowed." />
+		</module>
+		<module name="DesignForExtension">
+			<metadata name="net.sf.eclipsecs.core.comment" value="限制 普通方法必需是abstract,final 或 empty实现" />
+			<message key="design.forExtension"
+				value="Class Design-&gt; Method ''{0}'' is not designed for extension - needs to be abstract, final or empty." />
+		</module>
+		<module name="FinalClass">
+			<metadata name="net.sf.eclipsecs.core.comment" value="限制 只有private构造的类必需定义为 final class" />
+			<message key="final.class"
+				value="Class Design-&gt; Class {0} should be declared as final." />
+		</module>
+		<module name="InnerTypeLast">
+			<metadata name="net.sf.eclipsecs.core.comment" value="限制 静态成员内部类,成员内部类必需定义在类的最后" />
+			<message key="arrangement.members.before.inner"
+				value="Class Design-&gt; Fields and methods should be before inner classes." />
+		</module>
+		<module name="HideUtilityClassConstructor">
+			<metadata name="net.sf.eclipsecs.core.comment" value="限制 只有static方法的工具类 不能有public的构造" />
+			<message key="hide.utility.class"
+				value="Class Design-&gt; Utility classes should not have a public or default constructor." />
+		</module>
+		<module name="InterfaceIsType">
+			<metadata name="net.sf.eclipsecs.core.comment" value="禁止 接口只定义常量，不定义方法" />
+			<message key="interface.type"
+				value="Class Design-&gt; interfaces should describe a type and hence have methods." />
+		</module>
+		<module name="MutableException">
+			<metadata name="net.sf.eclipsecs.core.comment" value="限制 Exception与Error类的成员变量必需是final类型" />
+			<message key="mutable.exception"
+				value="Class Design-&gt; The field ''{0}'' must be declared final." />
+		</module>
+		<module name="ThrowsCount">
+			<metadata name="net.sf.eclipsecs.core.comment" value="限制 单个方法throws的种类数量" />
+			<property name="max" value="2" />
+			<message key="throws.count"
+				value="Class Design-&gt; Throws count is {0,number,integer} (max allowed is {1,number,integer})." />
+		</module>
+		<module name="VisibilityModifier">
+			<metadata name="net.sf.eclipsecs.core.comment" value="限制 成员变量的访问修饰符" />
+			<message key="variable.notPrivate"
+				value="Class Design-&gt; Variable ''{0}'' must be private and have accessor methods." />
+		</module>
+		<module name="BooleanExpressionComplexity">
+			<metadata name="net.sf.eclipsecs.core.comment" value="限制 布尔操作符的最大个数" />
+			<message key="booleanExpressionComplexity"
+				value="Metrics-&gt; Boolean expression complexity is {0,number,integer} (max allowed is {1,number,integer})." />
+		</module>
+		<module name="ClassDataAbstractionCoupling">
+			<metadata name="net.sf.eclipsecs.core.comment" value="限制 类内部new对象种类(java.lang.*除外)" />
+			<property name="max" value="20" />
+			<message key="classDataAbstractionCoupling"
+				value="Metrics-&gt; Class Data Abstraction Coupling is {0,number,integer} (max allowed is {1,number,integer}) classes {2}." />
+		</module>
+		<module name="ClassFanOutComplexity">
+			<metadata name="net.sf.eclipsecs.core.comment" value="限制 类依赖于其他类的数量" />
+			<message key="classFanOutComplexity"
+				value="Metrics-&gt; Class Fan-Out Complexity is {0,number,integer} (max allowed is {1,number,integer})." />
+		</module>
+		<module name="CyclomaticComplexity">
+			<metadata name="net.sf.eclipsecs.core.comment" value="限制 方法内部最大独立现行路径条数(圈复杂度)" />
+			<message key="cyclomaticComplexity"
+				value="Metrics-&gt; Cyclomatic Complexity is {0,number,integer} (max allowed is {1,number,integer})." />
+		</module>
+		<module name="JavaNCSS">
+			<metadata name="net.sf.eclipsecs.core.comment" value="限制 去除注释与空行的最大代码行数" />
+			<message key="ncss.method"
+				value="Metrics-&gt; NCSS for this method is {0,number,integer} (max allowed is {1,number,integer})." />
+			<message key="ncss.class"
+				value="Metrics-&gt; NCSS for this class is {0,number,integer} (max allowed is {1,number,integer})." />
+			<message key="ncss.file"
+				value="Metrics-&gt; NCSS for this file is {0,number,integer} (max allowed is {1,number,integer})." />
+		</module>
+		<module name="NPathComplexity">
+			<metadata name="net.sf.eclipsecs.core.comment" value="限制 方法内部最大可执行路径数" />
+			<message key="npathComplexity"
+				value="Metrics-&gt; NPath Complexity is {0,number,integer} (max allowed is {1,number,integer})." />
+		</module>
+		<module name="ArrayTypeStyle">
+			<metadata name="net.sf.eclipsecs.core.comment" value="限制 数组定义格式必需如：type[] variableName" />
+			<message key="array.type.style"
+				value="Miscellaneous-&gt; Array brackets at illegal position." />
+		</module>
+		<module name="DescendantToken">
+			<metadata name="net.sf.eclipsecs.core.comment" value="不明白" />
+			<property name="severity" value="ignore" />
+			<message key="descendant.token.sum.max"
+				value="Miscellaneous-&gt; Total count of {0} exceeds maximum count {1} under ''{2}''." />
+			<message key="descendant.token.sum.min"
+				value="Miscellaneous-&gt; Total count of {0} is less than minimum count {1} under ''{2}''." />
+			<metadata name="net.sf.eclipsecs.core.lastEnabledSeverity"
+				value="inherit" />
+		</module>
+		<module name="FinalParameters">
+			<metadata name="net.sf.eclipsecs.core.comment" value="限制 constructor,method 参数必需final" />
+			<message key="final.parameter"
+				value="Miscellaneous-&gt; Parameter {0} should be final." />
+		</module>
+		<module name="Indentation">
+			<metadata name="net.sf.eclipsecs.core.comment" value="限制 代码缩进" />
+			<message key="indentation.error"
+				value="Miscellaneous-&gt; {0} at indentation level {1} not at correct indentation, {2}" />
+			<message key="indentation.child.error"
+				value="Miscellaneous-&gt; {0} child at indentation level {1} not at correct indentation, {2}" />
+		</module>
+		<module name="TodoComment">
+			<metadata name="net.sf.eclipsecs.core.comment" value="验证 在注释中有未完成的 TODO 任务" />
+			<message key="todo.match"
+				value="Miscellaneous-&gt; Comment matches to-do format ''{0}''." />
+		</module>
+		<module name="TrailingComment">
+			<metadata name="net.sf.eclipsecs.core.comment" value="禁止 使用代码行尾注释" />
+			<property name="severity" value="ignore" />
+			<message key="trailing.comments"
+				value="Miscellaneous-&gt; Don''t use trailing comments." />
+			<metadata name="net.sf.eclipsecs.core.lastEnabledSeverity"
+				value="inherit" />
+		</module>
+		<module name="UncommentedMain">
+			<metadata name="net.sf.eclipsecs.core.comment" value="限制 main方法只能在指定条件的类中出现" />
+			<property name="severity" value="ignore" />
+			<property name="excludedClasses" value="^.*client\..*Client$" />
+			<message key="uncommented.main"
+				value="Miscellaneous-&gt; Uncommented main method found." />
+			<metadata name="net.sf.eclipsecs.core.lastEnabledSeverity"
+				value="inherit" />
+		</module>
+		<module name="UpperEll">
+			<metadata name="net.sf.eclipsecs.core.comment" value="限制 long类型 必需使用 L 样式" />
+			<message key="upperEll" value="Miscellaneous-&gt; Should use uppercase ''L''." />
+		</module>
+		<module name="Regexp">
+			<metadata name="net.sf.eclipsecs.core.comment" value="不明白" />
+			<property name="severity" value="ignore" />
+			<message key="required.regexp"
+				value="Miscellaneous-&gt; Required pattern ''{0}'' missing in file." />
+			<message key="illegal.regexp"
+				value="Miscellaneous-&gt; Line matches the illegal pattern ''{0}''." />
+			<message key="duplicate.regexp"
+				value="Miscellaneous-&gt; Found duplicate pattern ''{0}''." />
+			<metadata name="net.sf.eclipsecs.core.lastEnabledSeverity"
+				value="inherit" />
+		</module>
+		<module name="OuterTypeFilename">
+			<metadata name="net.sf.eclipsecs.core.comment" value="限制 第一个类名必需与java文件名相同&quot;" />
+			<message key="type.file.mismatch"
+				value="Miscellaneous-&gt; The name of the outer type and the file do not match." />
+		</module>
+		<module name="ModifierOrder">
+			<metadata name="net.sf.eclipsecs.core.comment" value="限制 关键字必需按JLS建议的顺序排序" />
+			<message key="mod.order"
+				value="Modifiers-&gt; ''{0}'' modifier out of order with the JLS suggestions." />
+			<message key="annotation.order"
+				value="Modifiers-&gt; ''{0}'' annotation modifier does not preceed non-annotation modifiers." />
+		</module>
+		<module name="RedundantModifier">
+			<metadata name="net.sf.eclipsecs.core.comment" value="禁止 多余的修饰符" />
+			<message key="redundantModifier" value="Modifiers-&gt; Redundant ''{0}'' modifier." />
+		</module>
+		<module name="AbstractClassName">
+			<metadata name="net.sf.eclipsecs.core.comment" value="限制 抽象类的命名规则" />
+			<property name="format" value="^Abstract.*$" />
+			<message key="illegal.abstract.class.name"
+				value="Naming Conventions-&gt; Name ''{0}'' must match pattern ''{1}''." />
+			<message key="no.abstract.class.modifier"
+				value="Naming Conventions-&gt; Class ''{0}'' must be declared as ''abstract''." />
+		</module>
+		<module name="ClassTypeParameterName">
+			<metadata name="net.sf.eclipsecs.core.comment" value="验证 类类型参数的命名规则" />
+			<message key="name.invalidPattern"
+				value="Naming Conventions-&gt; Name ''{0}'' must match pattern ''{1}''." />
+		</module>
+		<module name="ConstantName">
+			<metadata name="net.sf.eclipsecs.core.comment" value="验证 常量的命名规则" />
+			<message key="name.invalidPattern"
+				value="Naming Conventions-&gt; Name ''{0}'' must match pattern ''{1}''." />
+		</module>
+		<module name="LocalFinalVariableName">
+			<metadata name="net.sf.eclipsecs.core.comment" value="验证 局部final变量的命名规则" />
+			<message key="name.invalidPattern"
+				value="Naming Conventions-&gt; Name ''{0}'' must match pattern ''{1}''." />
+		</module>
+		<module name="LocalVariableName">
+			<metadata name="net.sf.eclipsecs.core.comment" value="验证 局部变量的命名规则" />
+			<message key="name.invalidPattern"
+				value="Naming Conventions-&gt; Name ''{0}'' must match pattern ''{1}''." />
+		</module>
+		<module name="MemberName">
+			<metadata name="net.sf.eclipsecs.core.comment" value="验证 成员变量的命名规则" />
+			<message key="name.invalidPattern"
+				value="Naming Conventions-&gt; Name ''{0}'' must match pattern ''{1}''." />
+		</module>
+		<module name="MethodName">
+			<metadata name="net.sf.eclipsecs.core.comment" value="验证 方法名的命名规则" />
+			<message key="name.invalidPattern"
+				value="Naming Conventions-&gt; Name ''{0}'' must match pattern ''{1}''." />
+			<message key="method.name.equals.class.name"
+				value="Naming Conventions-&gt; Method Name ''{0}'' must not equal the enclosing class name." />
+		</module>
+		<module name="MethodTypeParameterName">
+			<metadata name="net.sf.eclipsecs.core.comment" value="验证 方法类型参数的命名规则" />
+			<message key="name.invalidPattern"
+				value="Naming Conventions-&gt; Name ''{0}'' must match pattern ''{1}''." />
+		</module>
+		<module name="PackageName">
+			<metadata name="net.sf.eclipsecs.core.comment" value="验证 包名的命名规则" />
+			<property name="format" value="^[a-z]+(\.[a-z_][a-z0-9_]*)*$" />
+			<message key="name.invalidPattern"
+				value="Naming Conventions-&gt; Name ''{0}'' must match pattern ''{1}''." />
+		</module>
+		<module name="ParameterName">
+			<metadata name="net.sf.eclipsecs.core.comment" value="验证 参数的命名规则" />
+			<message key="name.invalidPattern"
+				value="Naming Conventions-&gt; Name ''{0}'' must match pattern ''{1}''." />
+		</module>
+		<module name="StaticVariableName">
+			<metadata name="net.sf.eclipsecs.core.comment" value="验证 静态变量的命名规则" />
+			<message key="name.invalidPattern"
+				value="Naming Conventions-&gt; Name ''{0}'' must match pattern ''{1}''." />
+		</module>
+		<module name="TypeName">
+			<metadata name="net.sf.eclipsecs.core.comment" value="验证 类的命名规则" />
+			<property name="tokens" value="CLASS_DEF" />
+			<message key="name.invalidPattern"
+				value="Naming Conventions-&gt; Name ''{0}'' must match pattern ''{1}''." />
+		</module>
+		<module name="TypeName">
+			<metadata name="net.sf.eclipsecs.core.comment" value="验证 接口的命名规则" />
+			<property name="format" value="^I[A-Z][a-zA-Z0-9]*$" />
+			<property name="tokens" value="INTERFACE_DEF" />
+			<message key="name.invalidPattern"
+				value="Naming Conventions-&gt; Name ''{0}'' must match pattern ''{1}''." />
+		</module>
+		<module name="GenericWhitespace">
+			<metadata name="net.sf.eclipsecs.core.comment" value="禁止 泛型符号前后是否使用whitespace" />
+			<property name="severity" value="ignore" />
+			<message key="ws.followed"
+				value="Whitespace-&gt; ''{0}'' is followed by whitespace." />
+			<message key="ws.illegalFollow"
+				value="Whitespace-&gt; ''{0}'' is followed by an illegal character." />
+			<message key="ws.preceded"
+				value="Whitespace-&gt; ''{0}'' is preceded with whitespace." />
+			<message key="ws.notPreceded"
+				value="Whitespace-&gt; ''{0}'' is not preceded with whitespace." />
+			<metadata name="net.sf.eclipsecs.core.lastEnabledSeverity"
+				value="inherit" />
+		</module>
+		<module name="EmptyForInitializerPad">
+			<metadata name="net.sf.eclipsecs.core.comment" value="限制 for循环init块是否有whitespace" />
+			<property name="severity" value="ignore" />
+			<message key="ws.preceded"
+				value="Whitespace-&gt; ''{0}'' is preceded with whitespace." />
+			<message key="ws.notPreceded"
+				value="Whitespace-&gt; ''{0}'' is not preceded with whitespace." />
+			<metadata name="net.sf.eclipsecs.core.lastEnabledSeverity"
+				value="inherit" />
+		</module>
+		<module name="EmptyForIteratorPad">
+			<metadata name="net.sf.eclipsecs.core.comment" value="限制 for循环变量控制块是否有whitespace" />
+			<property name="severity" value="ignore" />
+			<property name="option" value="space" />
+			<message key="ws.followed"
+				value="Whitespace-&gt; ''{0}'' is followed by whitespace." />
+			<message key="ws.notFollowed"
+				value="Whitespace-&gt; ''{0}'' is not followed by whitespace." />
+			<metadata name="net.sf.eclipsecs.core.lastEnabledSeverity"
+				value="inherit" />
+		</module>
+		<module name="NoWhitespaceAfter">
+			<metadata name="net.sf.eclipsecs.core.comment" value="禁止 指定操作符之后有whitespace" />
+			<property name="severity" value="ignore" />
+			<property name="tokens"
+				value="ARRAY_INIT,BNOT,DEC,DOT,INC,LNOT,UNARY_MINUS,UNARY_PLUS" />
+			<message key="ws.followed"
+				value="Whitespace-&gt; ''{0}'' is followed by whitespace." />
+			<metadata name="net.sf.eclipsecs.core.lastEnabledSeverity"
+				value="inherit" />
+		</module>
+		<module name="NoWhitespaceBefore">
+			<metadata name="net.sf.eclipsecs.core.comment" value="禁止 指定操作符之前有whitespace" />
+			<property name="severity" value="ignore" />
+			<property name="tokens" value="SEMI,DOT,POST_DEC,POST_INC" />
+			<message key="ws.preceded"
+				value="Whitespace-&gt; ''{0}'' is preceded with whitespace." />
+			<metadata name="net.sf.eclipsecs.core.lastEnabledSeverity"
+				value="inherit" />
+		</module>
+		<module name="OperatorWrap">
+			<metadata name="net.sf.eclipsecs.core.comment" value="限制 表达式过长操作符位置" />
+			<property name="severity" value="ignore" />
+			<message key="line.new"
+				value="Whitespace-&gt; ''{0}'' should be on a new line." />
+			<message key="line.previous"
+				value="Whitespace-&gt; ''{0}'' should be on the previous line." />
+			<metadata name="net.sf.eclipsecs.core.lastEnabledSeverity"
+				value="inherit" />
+		</module>
+		<module name="MethodParamPad">
+			<metadata name="net.sf.eclipsecs.core.comment" value="限制 构造,方法定义及其调用时,()前面是否包含whitespace" />
+			<property name="severity" value="ignore" />
+			<message key="ws.preceded"
+				value="Whitespace-&gt; ''{0}'' is preceded with whitespace." />
+			<message key="ws.notPreceded"
+				value="Whitespace-&gt; ''{0}'' is not preceded with whitespace." />
+			<message key="line.previous"
+				value="Whitespace-&gt; ''{0}'' should be on the previous line." />
+			<metadata name="net.sf.eclipsecs.core.lastEnabledSeverity"
+				value="inherit" />
+		</module>
+		<module name="ParenPad">
+			<metadata name="net.sf.eclipsecs.core.comment" value="限制 ()中间是否需要whitespace" />
+			<property name="severity" value="ignore" />
+			<message key="ws.followed"
+				value="Whitespace-&gt; ''{0}'' is followed by whitespace." />
+			<message key="ws.preceded"
+				value="Whitespace-&gt; ''{0}'' is preceded with whitespace." />
+			<message key="ws.notFollowed"
+				value="Whitespace-&gt; ''{0}'' is not followed by whitespace." />
+			<message key="ws.notPreceded"
+				value="Whitespace-&gt; ''{0}'' is not preceded with whitespace." />
+			<metadata name="net.sf.eclipsecs.core.lastEnabledSeverity"
+				value="inherit" />
+		</module>
+		<module name="TypecastParenPad">
+			<metadata name="net.sf.eclipsecs.core.comment" value="限制 强制类型转换()中间是否有空格" />
+			<property name="severity" value="ignore" />
+			<property name="option" value="space" />
+			<property name="tokens" value="TYPECAST" />
+			<message key="ws.followed"
+				value="Whitespace-&gt; ''{0}'' is followed by whitespace." />
+			<message key="ws.preceded"
+				value="Whitespace-&gt; ''{0}'' is preceded with whitespace." />
+			<message key="ws.notFollowed"
+				value="Whitespace-&gt; ''{0}'' is not followed by whitespace." />
+			<message key="ws.notPreceded"
+				value="Whitespace-&gt; ''{0}'' is not preceded with whitespace." />
+			<metadata name="net.sf.eclipsecs.core.lastEnabledSeverity"
+				value="inherit" />
+		</module>
+		<module name="WhitespaceAfter">
+			<metadata name="net.sf.eclipsecs.core.comment" value="限制 指定符号之后必需使用whitespace" />
+			<property name="severity" value="ignore" />
+			<metadata name="net.sf.eclipsecs.core.lastEnabledSeverity"
+				value="inherit" />
+		</module>
+		<module name="WhitespaceAround">
+			<metadata name="net.sf.eclipsecs.core.comment" value="限制 指定操作符前后必需使用whitespace" />
+			<property name="severity" value="ignore" />
+			<property name="tokens"
+				value="ASSIGN,BAND,BAND_ASSIGN,BOR,BOR_ASSIGN,BSR,BSR_ASSIGN,BXOR,BXOR_ASSIGN,COLON,DIV,DIV_ASSIGN,EQUAL,GE,GT,LAND,LCURLY,LE,LITERAL_ASSERT,LITERAL_CATCH,LITERAL_DO,LITERAL_ELSE,LITERAL_FINALLY,LITERAL_FOR,LITERAL_IF,LITERAL_RETURN,LITERAL_SYNCHRONIZED,LITERAL_TRY,LITERAL_WHILE,LOR,LT,MINUS,MINUS_ASSIGN,MOD,MOD_ASSIGN,NOT_EQUAL,PLUS,PLUS_ASSIGN,QUESTION,SL,SLIST,SL_ASSIGN,SR,SR_ASSIGN,STAR,STAR_ASSIGN,LITERAL_ASSERT,TYPE_EXTENSION_AND,WILDCARD_TYPE" />
+			<message key="ws.notFollowed"
+				value="Whitespace-&gt; ''{0}'' is not followed by whitespace." />
+			<message key="ws.notPreceded"
+				value="Whitespace-&gt; ''{0}'' is not preceded with whitespace." />
+			<metadata name="net.sf.eclipsecs.core.lastEnabledSeverity"
+				value="inherit" />
+		</module>
+		<module name="AnnotationUseStyle">
+			<metadata name="net.sf.eclipsecs.core.comment" value="限制 注解风格" />
+			<property name="elementStyle" value="expanded" />
+			<property name="closingParens" value="always" />
+			<message key="annotation.incorrect.style"
+				value="Annotations-&gt; Annotation style must be ''{0}''." />
+			<message key="annotation.parens.missing"
+				value="Annotations-&gt; Annotation must have closing parenthesis." />
+			<message key="annotation.parens.present"
+				value="Annotations-&gt; Annotation cannot have closing parenthesis." />
+			<message key="annotation.trailing.comma.missing"
+				value="Annotations-&gt; Annotation array values must contain trailing comma." />
+			<message key="annotation.trailing.comma.present"
+				value="Annotations-&gt; Annotation array values cannot contain trailing comma." />
+		</module>
+		<module name="MissingDeprecated">
+			<metadata name="net.sf.eclipsecs.core.comment"
+				value="验证 javadoc中的@deprecated 与 @java.lang.Deprecated 必需同时出现" />
+			<message key="javadoc.duplicateTag" value="Annotations-&gt; Duplicate {0} tag." />
+			<message key="javadoc.missing" value="Annotations-&gt; Missing a Javadoc comment." />
+			<message key="annotation.missing.deprecated"
+				value="Annotations-&gt; Must include both @java.lang.Deprecated annotation and @deprecated Javadoc tag with description." />
+		</module>
+		<module name="MissingOverride">
+			<metadata name="net.sf.eclipsecs.core.comment"
+				value="验证 方法javadoc上加 '{'@inheritDoc'}'，必需要有@Override" />
+			<message key="annotation.missing.override"
+				value="Annotations-&gt; Must include @java.lang.Override annotation when '{'@inheritDoc'}' Javadoc tag exists." />
+			<message key="tag.not.valid.on"
+				value="Annotations-&gt; The Javadoc {0} tag is not valid at this location." />
+		</module>
+		<module name="PackageAnnotation">
+			<metadata name="net.sf.eclipsecs.core.comment" value="证验 package的annotation 必需在package-info.java中" />
+			<message key="annotation.package.location"
+				value="Annotations-&gt; Package annotations must be in the package-info.java info." />
+		</module>
+		<module name="SuppressWarnings">
+			<metadata name="net.sf.eclipsecs.core.comment" value="禁止 使用指定的SuppressWarnings" />
+			<property name="severity" value="ignore" />
+			<property name="format" value="^.+$" />
+			<message key="suppressed.warning.not.allowed"
+				value="Annotations-&gt; The warning ''{0}'' cannot be suppressed at this location." />
+			<metadata name="net.sf.eclipsecs.core.lastEnabledSeverity"
+				value="inherit" />
+		</module>
+		<module name="JavadocMethod">
+			<metadata name="net.sf.eclipsecs.core.comment" value="限制 方法上的javadoc" />
+			<property name="allowUndeclaredRTE" value="true" />
+			<property name="allowThrowsTagsForSubclasses" value="true" />
+			<property name="allowMissingParamTags" value="true" />
+			<property name="allowMissingThrowsTags" value="true" />
+			<property name="allowMissingReturnTag" value="true" />
+			<property name="allowMissingPropertyJavadoc" value="true" />
+			<property name="suppressLoadErrors" value="true" />
+			<property name="tokens" value="METHOD_DEF" />
+			<message key="javadoc.duplicateTag" value="Javadoc Comments-&gt; Duplicate {0} tag." />
+			<message key="javadoc.classInfo"
+				value="Javadoc Comments-&gt; Unable to get class information for {0} tag ''{1}''." />
+			<message key="javadoc.missing"
+				value="Javadoc Comments-&gt; Missing a Javadoc comment." />
+			<message key="javadoc.expectedTag"
+				value="Javadoc Comments-&gt; Expected {0} tag for ''{1}''." />
+			<message key="javadoc.invalidInheritDoc"
+				value="Javadoc Comments-&gt; Invalid use of the '{'@inheritDoc'}' tag." />
+			<message key="javadoc.unusedTagGeneral" value="Javadoc Comments-&gt; Unused Javadoc tag." />
+			<message key="javadoc.return.expected" value="Javadoc Comments-&gt; Expected an @return tag." />
+			<message key="javadoc.unusedTag"
+				value="Javadoc Comments-&gt; Unused {0} tag for ''{1}''." />
+		</module>
+		<module name="JavadocStyle">
+			<metadata name="net.sf.eclipsecs.core.comment" value="限制 javadoc的样式" />
+			<property name="severity" value="ignore" />
+			<property name="checkEmptyJavadoc" value="true" />
+			<property name="checkHtml" value="false" />
+			<message key="javadoc.incompleteTag"
+				value="Javadoc Comments-&gt; Incomplete HTML tag found: {0}" />
+			<message key="javadoc.noperiod"
+				value="Javadoc Comments-&gt; First sentence should end with a period." />
+			<message key="javadoc.extrahtml"
+				value="Javadoc Comments-&gt; Extra HTML tag found: {0}" />
+			<message key="javadoc.missing"
+				value="Javadoc Comments-&gt; Missing a Javadoc comment." />
+			<message key="javadoc.empty"
+				value="Javadoc Comments-&gt; Javadoc has empty description section." />
+			<message key="javadoc.unclosedhtml"
+				value="Javadoc Comments-&gt; Unclosed HTML tag found: {0}" />
+			<metadata name="net.sf.eclipsecs.core.lastEnabledSeverity"
+				value="inherit" />
+		</module>
+		<module name="JavadocType">
+			<metadata name="net.sf.eclipsecs.core.comment" value="限制 类或接口需要javadoc" />
+			<message key="type.missingTag"
+				value="Javadoc Comments-&gt; Type Javadoc comment is missing an {0} tag." />
+			<message key="javadoc.missing"
+				value="Javadoc Comments-&gt; Missing a Javadoc comment." />
+			<message key="javadoc.unusedTagGeneral" value="Javadoc Comments-&gt; Unused Javadoc tag." />
+			<message key="javadoc.unusedTag"
+				value="Javadoc Comments-&gt; Unused {0} tag for ''{1}''." />
+			<message key="type.tagFormat"
+				value="Javadoc Comments-&gt; Type Javadoc tag {0} must match pattern ''{1}''." />
+		</module>
+		<module name="JavadocVariable">
+			<metadata name="net.sf.eclipsecs.core.comment" value="限制 成员变量需要javadoc" />
+			<message key="javadoc.missing"
+				value="Javadoc Comments-&gt; Missing a Javadoc comment." />
+		</module>
+		<module name="WriteTag">
+			<metadata name="net.sf.eclipsecs.core.comment" value="不明白" />
+			<property name="severity" value="ignore" />
+			<message key="type.missingTag"
+				value="Javadoc Comments-&gt; Type Javadoc comment is missing an {0} tag." />
+			<message key="javadoc.writeTag" value="Javadoc Comments-&gt; {0}={1}" />
+			<message key="type.tagFormat"
+				value="Javadoc Comments-&gt; Type Javadoc tag {0} must match pattern ''{1}''." />
+			<metadata name="net.sf.eclipsecs.core.lastEnabledSeverity"
+				value="inherit" />
+		</module>
+		<module name="ForbidAnnotation">
+			<metadata name="net.sf.eclipsecs.core.comment" value="禁止 在指定的范围使用指定的annotation" />
+			<property name="severity" value="ignore" />
+			<property name="annotationNames" value="MyAnnotation" />
+			<property name="annotationTargets" value="CLASS_DEF" />
+			<message key="annotation.incorrect.target"
+				value="SevNTU checks-&gt; Incorrect target: ''{0}'' for annotation: ''{1}''." />
+			<metadata name="net.sf.eclipsecs.core.lastEnabledSeverity"
+				value="inherit" />
+		</module>
+		<module name="AvoidConstantsInInterfaces">
+			<metadata name="net.sf.eclipsecs.core.comment" value="禁止 interface中定义常量" />
+		</module>
+		<module name="AvoidDefaultSerializableInInnerClasses">
+			<metadata name="net.sf.eclipsecs.core.comment" value="禁止 在内部类中实现Serializable" />
+		</module>
+		<module name="AvoidHidingCauseException">
+			<metadata name="net.sf.eclipsecs.core.comment" value="禁止 在隐藏真实的Throwable" />
+		</module>
+		<module name="AvoidNotShortCircuitOperatorsForBoolean">
+			<metadata name="net.sf.eclipsecs.core.comment"
+				value="禁止 在boolean表达式中使用&amp;,| ，建议使用短路&amp;&amp;,||" />
+		</module>
+		<module name="AvoidModifiersForTypes">
+			<metadata name="net.sf.eclipsecs.core.comment" value="不明白" />
+			<property name="severity" value="ignore" />
+			<metadata name="net.sf.eclipsecs.core.lastEnabledSeverity"
+				value="inherit" />
+		</module>
+		<module name="CustomDeclarationOrder">
+			<metadata name="net.sf.eclipsecs.core.comment" value="不使用 与其他地方有重复" />
+			<property name="severity" value="ignore" />
+			<metadata name="net.sf.eclipsecs.core.lastEnabledSeverity"
+				value="inherit" />
+		</module>
+		<module name="ForbidCertainImports">
+			<metadata name="net.sf.eclipsecs.core.comment" value="不使用 与其他地方有重复" />
+			<property name="severity" value="ignore" />
+			<metadata name="net.sf.eclipsecs.core.lastEnabledSeverity"
+				value="inherit" />
+		</module>
+		<module name="ForbidInstantiation">
+			<metadata name="net.sf.eclipsecs.core.comment" value="禁止 实例化指定的类" />
+			<message key="forbid.instantiation"
+				value="SevNTU checks-&gt; Instantiation of 'NullPointerException' is not allowed." />
+		</module>
+		<module name="ForbidCCommentsInMethods">
+			<metadata name="net.sf.eclipsecs.core.comment" value="禁止 方法体内使用C语言样式的注释:/* xxx */" />
+		</module>
+		<module name="ReturnNullInsteadOfBoolean">
+			<metadata name="net.sf.eclipsecs.core.comment" value="禁止 在要求return Boolean时,return null" />
+		</module>
+		<module name="ReturnBooleanFromTernary">
+			<metadata name="net.sf.eclipsecs.core.comment" value="不使用 已经在其他地方禁止了三目运算" />
+			<property name="severity" value="ignore" />
+			<metadata name="net.sf.eclipsecs.core.lastEnabledSeverity"
+				value="inherit" />
+		</module>
+		<module name="IllegalCatchExtended">
+			<metadata name="net.sf.eclipsecs.core.comment" value="不使用 与其他地方有重复" />
+			<property name="severity" value="ignore" />
+			<metadata name="net.sf.eclipsecs.core.lastEnabledSeverity"
+				value="inherit" />
+		</module>
+		<module name="LogicConditionNeedOptimizationCheck">
+			<metadata name="net.sf.eclipsecs.core.comment" value="不明白" />
+			<property name="severity" value="ignore" />
+			<metadata name="net.sf.eclipsecs.core.lastEnabledSeverity"
+				value="inherit" />
+		</module>
+		<module name="MultipleVariableDeclarationsExtended">
+			<metadata name="net.sf.eclipsecs.core.comment" value="不使用 与其他地方有重复" />
+			<property name="severity" value="ignore" />
+			<metadata name="net.sf.eclipsecs.core.lastEnabledSeverity"
+				value="inherit" />
+		</module>
+		<module name="MultipleStringLiteralsExtended">
+			<metadata name="net.sf.eclipsecs.core.comment" value="不明白" />
+			<property name="severity" value="ignore" />
+			<metadata name="net.sf.eclipsecs.core.lastEnabledSeverity"
+				value="inherit" />
+		</module>
+		<module name="ReturnCountExtended">
+			<metadata name="net.sf.eclipsecs.core.comment" value="不使用 与其他地方有重复" />
+			<property name="severity" value="ignore" />
+			<metadata name="net.sf.eclipsecs.core.lastEnabledSeverity"
+				value="inherit" />
+		</module>
+		<module name="UnnecessaryParenthesesExtended">
+			<metadata name="net.sf.eclipsecs.core.comment" value="不使用 与其他地方有重复" />
+			<property name="severity" value="ignore" />
+			<metadata name="net.sf.eclipsecs.core.lastEnabledSeverity"
+				value="inherit" />
+		</module>
+		<module name="LineLengthExtended">
+			<metadata name="net.sf.eclipsecs.core.comment" value="不使用 与其他地方有重复" />
+			<property name="severity" value="ignore" />
+			<property name="max" value="150" />
+			<property name="tabWidth" value="4" />
+			<metadata name="net.sf.eclipsecs.core.lastEnabledSeverity"
+				value="inherit" />
+		</module>
+		<module name="InterfaceTypeParameterNameCheck">
+			<metadata name="net.sf.eclipsecs.core.comment" value="不使用 与其他地方有重复" />
+			<property name="severity" value="ignore" />
+			<metadata name="net.sf.eclipsecs.core.lastEnabledSeverity"
+				value="inherit" />
+		</module>
+		<module name="ChildBlockLength">
+			<metadata name="net.sf.eclipsecs.core.comment" value="不使用 与其他地方有重复" />
+			<property name="severity" value="ignore" />
+			<property name="blockTypes"
+				value="LITERAL_IF,LITERAL_ELSE,LITERAL_WHILE,LITERAL_DO,LITERAL_FOR,LITERAL_SWITCH,LITERAL_TRY,LITERAL_CATCH" />
+			<metadata name="net.sf.eclipsecs.core.lastEnabledSeverity"
+				value="inherit" />
+		</module>
+		<module name="VariableDeclarationUsageDistance">
+			<metadata name="net.sf.eclipsecs.core.comment" value="禁止 参数的定义位置与使用位置间距过大" />
+		</module>
+		<module name="CauseParameterInException">
+			<metadata name="net.sf.eclipsecs.core.comment" value="限制 指定的Exception中必需有Exception 的参数的构造" />
+		</module>
+		<module name="AbbreviationAsWordInName">
+			<metadata name="net.sf.eclipsecs.core.comment" value="不明白" />
+			<property name="severity" value="ignore" />
+			<metadata name="net.sf.eclipsecs.core.lastEnabledSeverity"
+				value="inherit" />
+		</module>
+		<module name="OverridableMethodInConstructor">
+			<metadata name="net.sf.eclipsecs.core.comment" value="不使用 因为方法有定义要final，其选项无作用" />
+			<property name="severity" value="ignore" />
+			<metadata name="net.sf.eclipsecs.core.lastEnabledSeverity"
+				value="inherit" />
+		</module>
+	</module>
+	<module name="FileLength">
+		<metadata name="net.sf.eclipsecs.core.comment" value="限制 文件的最大行数" />
+		<message key="maxLen.file"
+			value="Size Violations-&gt; File length is {0,number,integer} lines (max allowed is {1,number,integer})." />
+	</module>
+	<module name="NewlineAtEndOfFile">
+		<metadata name="net.sf.eclipsecs.core.comment" value="限制 文件要以 行分隔符 结束（各操作系统不同）" />
+		<message key="noNewlineAtEOF"
+			value="Miscellaneous-&gt; File does not end with a newline." />
+		<message key="unable.open" value="Miscellaneous-&gt; Unable to open ''{0}''." />
+	</module>
+	<module name="Translation">
+		<metadata name="net.sf.eclipsecs.core.comment"
+			value="验证 一组相关的属性文件(一般指.properties文件)的key值(只在复制，移动时有效)" />
+		<property name="severity" value="ignore" />
+		<message key="translation.missingKey" value="Miscellaneous-&gt; Key ''{0}'' missing." />
+		<metadata name="net.sf.eclipsecs.core.lastEnabledSeverity"
+			value="inherit" />
+	</module>
+	<module name="FileTabCharacter">
+		<metadata name="net.sf.eclipsecs.core.comment" value="禁止 使用tab" />
+		<property name="severity" value="ignore" />
+		<property name="eachLine" value="true" />
+		<message key="containsTab" value="Whitespace-&gt; Line contains a tab character." />
+		<message key="file.containsTab"
+			value="Whitespace-&gt; File contains tab characters (this is the first instance)." />
+		<metadata name="net.sf.eclipsecs.core.lastEnabledSeverity"
+			value="inherit" />
+	</module>
+	<module name="JavadocPackage">
+		<metadata name="net.sf.eclipsecs.core.comment" value="限制 每个包中必需有package-info.java或package.html" />
+		<property name="severity" value="ignore" />
+		<message key="javadoc.packageInfo"
+			value="Javadoc Comments-&gt; Missing package-info.java file." />
+		<message key="javadoc.legacyPackageHtml"
+			value="Javadoc Comments-&gt; Legacy package.html file should be removed." />
+		<metadata name="net.sf.eclipsecs.core.lastEnabledSeverity"
+			value="inherit" />
+	</module>
+</module>

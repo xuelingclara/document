@@ -1,0 +1,4 @@
+centos下自动关闭：
+vi eclipse.ini
+-Xms256m
+-Xmx512m

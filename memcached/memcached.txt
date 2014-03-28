@@ -1,0 +1,15 @@
+yum install libevent-devel
+cd /usr/local/src
+wget -N http://www.memcached.org/files/memcached-1.4.17.tar.gz
+tar -zxf memcached-1.4.17.tar.gz
+cd memcached-1.4.17
+./configure --prefix=/usr/local/memcached
+make && make install
+
+修改 ${同级目录}/memcached的参数
+
+cp ${同级目录}/memcached /etc/init.d/
+chmod +x /etc/init.d/memcached
+chkconfig --add /etc/init.d/memcached
+chkconfig --level 35 memcached on
+service memcached start

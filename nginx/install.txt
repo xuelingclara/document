@@ -1,0 +1,24 @@
+1.安装
+	1)pcre
+		cd /usr/local/src
+		wget -N ftp://ftp.csx.cam.ac.uk/pub/software/programming/pcre/pcre-8.21.tar.gz
+		tar -zxvf pcre-8.21.tar.gz
+		cd pcre-8.21
+		./configure
+	2)zlib
+		cd /usr/local/src
+		wget -N http://zlib.net/zlib-1.2.8.tar.gz
+		tar -zxvf zlib-1.2.8.tar.gz
+		cd zlib-1.2.8
+		./configure
+	3)nginx
+		cd /usr/local/src
+		wget -N http://nginx.org/download/nginx-1.2.8.tar.gz
+		tar -zxvf nginx-1.2.8.tar.gz
+		cd nginx-1.2.8
+		./configure --prefix=/usr/local/nginx --with-pcre=/usr/local/src/pcre-8.21/ --with-zlib=/usr/local/src/zlib-1.2.8/
+		make && make install
+		
+加入开机启动
+vi /etc/rc.d/rc.local
+/usr/local/nginx/sbin/nginx

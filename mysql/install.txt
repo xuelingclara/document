@@ -1,0 +1,29 @@
+yum -y install cmake ncurses-devel bison gcc-c++
+
+cd /usr/local/src;
+wget -N http://jar.ezcom.biz/software/mysql-5.5.22.tar.gz
+tar zxf mysql-5.5.22.tar.gz
+cd mysql-5.5.22
+BUILD/autorun.sh CFLAGS="-O3 -mpentiumpro" CXX=gcc CXXFLAGS="-O3 -mpentiumpro -felide-constructors -fno-exceptions -fno-rtti"
+./configure --prefix=/usr/local/mysql --with-tcp-port=3306 --with-unix-socket-path=/var/lib/mysql/mysql.sock --localstatedir=/var/lib/mysql --with-comment=Source --with-server-suffix=-Comsenz --enable-assembler --with-mysqld-user=mysql --with-mysqld-ldflags=-all-static --with-client-ldflags=-all-static --with-extra-charsets=all --with-charset=utf8 --with-collation=utf8_general_ci --enable-thread-safe-client --with-big-tables --without-debug --with-plugins=innobase,partition  --with-ssl
+make &&  make install
+useradd mysql -d /var/lib/mysql
+cd /usr/local/mysql
+chown -R root:mysql .
+chown -R mysql.mysql /var/lib/mysql
+scripts/mysql_install_db --user=mysql
+#cp support-files/my-default.cnf /etc/my.cnf
+vim /etc/my.cnf
+	innodb_file_per_table
+	skip-name-resolve
+	innodb_flush_method=O_DIRECT
+bin/mysqld_safe --user=mysql
+cp support-files/mysql.server /etc/rc.d/init.d/mysqld
+chmod 755 /etc/rc.d/init.d/mysqld
+/etc/rc.d/init.d/mysqld start
+chkconfig --add mysqld
+chkconfig mysqld on
+
+echo "export PATH=/usr/local/mysql/bin:$PATH" >>  ~/.bash_profile;
+source ~/.bash_profile;
+/usr/local/mysql/bin/mysql_secure_installation;
