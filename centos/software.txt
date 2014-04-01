@@ -33,3 +33,12 @@ yum install http://pkgs.repoforge.org/perl-Gtk2-GladeXML/perl-Gtk2-GladeXML-1.00
 yum install http://pkgs.repoforge.org/perl-Gtk2-Ex-Simple-List/perl-Gtk2-Ex-Simple-List-0.50-1.el6.rf.noarch.rpm
 yum install http://pkgs.repoforge.org/perl-Net-ARP/perl-Net-ARP-1.0.6-1.el6.rf.x86_64.rpm
 yum install http://jaist.dl.sourceforge.net/project/pacmanager/pac-4.0/pac-4.5.3.5-2.x86_64.rpm
+
+
+openoffice:
+wget -N http://cznic.dl.sourceforge.net/project/openofficeorg.mirror/4.0.1/binaries/zh-CN/Apache_OpenOffice_4.0.1_Linux_x86-64_install-rpm_zh-CN.tar.gz
+tar -zxf Apache_OpenOffice_4.0.1_Linux_x86-64_install-rpm_zh-CN.tar.gz 
+cd zh-CN/RPMS/
+yum install *.rpm
+#创建启动器:
+/opt/openoffice4/program/soffice
