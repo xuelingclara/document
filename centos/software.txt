@@ -4,9 +4,9 @@ ibus-setup
 
 VirtualBox:
 yum install gcc 
+yum install kernel
 yum install kernel-devel 
 yum install kernel-headers 
-yum install kernel
 ./VirtualBox-4.3.4-91027-Linux_amd64.run
 
 远程桌面：

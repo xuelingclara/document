@@ -1,4 +1,2 @@
-centos下自动关闭：
-vi eclipse.ini
--Xms256m
--Xmx512m
+centos提示后自动关闭：
+yum remove xulrunner
