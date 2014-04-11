@@ -1,28 +1,40 @@
-cd /usr/local/src
-wget -N http://mirrors.cnnic.cn/apache/zookeeper/zookeeper-3.4.6/zookeeper-3.4.6.tar.gz
-tar -zxf zookeeper-3.4.6.tar.gz
-mv zookeeper-3.4.6 /usr/local/zookeeper3
-mkdir /usr/local/zookeeper3/data
-mkdir /usr/local/zookeeper3/log
-echo 'tickTime=2000' > /usr/local/zookeeper3/conf/zoo.cfg
-echo 'initLimit=10' >> /usr/local/zookeeper3/conf/zoo.cfg
-echo 'syncLimit=5' >> /usr/local/zookeeper3/conf/zoo.cfg
-echo 'dataDir=/usr/local/zookeeper3/data' >> /usr/local/zookeeper3/conf/zoo.cfg
-echo 'dataLogDir=/usr/local/zookeeper3/log' >> /usr/local/zookeeper3/conf/zoo.cfg
-echo 'clientPort=2181' >> /usr/local/zookeeper3/conf/zoo.cfg
-echo 'server.111=192.168.0.111:2888:3888' >> /usr/local/zookeeper3/conf/zoo.cfg 
-echo 'server.112=192.168.0.112:2888:3888' >> /usr/local/zookeeper3/conf/zoo.cfg
-echo 'server.113=192.168.0.113:2888:3888' >> /usr/local/zookeeper3/conf/zoo.cfg
+#开机启动
+echo '/opt/zookeeper/bin/zkServer.sh start' >> /etc/rc.d/rc.local
 
-echo 'export PATH=$PATH:/usr/local/zookeeper3/bin' >> /etc/profile
+#环境变量
+echo 'export ZOOKEEPER_HOME=/opt/zookeeper' >> /etc/profile
 source /etc/profile
 
-echo '111' > /usr/local/zookeeper3/data/myid
-echo '112' > /usr/local/zookeeper3/data/myid
-echo '113' > /usr/local/zookeeper3/data/myid
+#zookeeper安装
+#192.168.19.204(myid=204)
+#192.168.19.205(myid=205)
+#192.168.19.206(myid=206)
+cd /tmp
+wget -N http://mirrors.cnnic.cn/apache/zookeeper/zookeeper-3.4.6/zookeeper-3.4.6.tar.gz
+tar -zxf zookeeper-3.4.6.tar.gz
+mv ./zookeeper-3.4.6 $ZOOKEEPER_HOME
+mkdir $ZOOKEEPER_HOME/data
+mkdir $ZOOKEEPER_HOME/logs
+echo 'tickTime=2000'                        > $ZOOKEEPER_HOME/conf/zoo.cfg
+echo 'initLimit=10'                        >> $ZOOKEEPER_HOME/conf/zoo.cfg
+echo 'syncLimit=5'                         >> $ZOOKEEPER_HOME/conf/zoo.cfg
+echo 'dataDir=$ZOOKEEPER_HOME/data'        >> $ZOOKEEPER_HOME/conf/zoo.cfg
+echo 'dataLogDir=$ZOOKEEPER_HOME/logs'     >> $ZOOKEEPER_HOME/conf/zoo.cfg
+echo 'clientPort=2181'                     >> $ZOOKEEPER_HOME/conf/zoo.cfg
+#     server.myid=192.168.19.XXX:2888:3888
+echo 'server.204=192.168.19.204:2888:3888' >> $ZOOKEEPER_HOME/conf/zoo.cfg 
+echo 'server.205=192.168.19.205:2888:3888' >> $ZOOKEEPER_HOME/conf/zoo.cfg
+echo 'server.206=192.168.19.206:2888:3888' >> $ZOOKEEPER_HOME/conf/zoo.cfg
 
-zkServer.sh start
-zkServer.sh status
-zkServer.sh stop
+#单个IP上执行(echo 'server.myid' > $ZOOKEEPER_HOME/data/myid)
+echo '204' > $ZOOKEEPER_HOME/data/myid
+echo '205' > $ZOOKEEPER_HOME/data/myid
+echo '206' > $ZOOKEEPER_HOME/data/myid
+
+#常用命令
+$ZOOKEEPER_HOME/bin/zkServer.sh start
+$ZOOKEEPER_HOME/bin/zkServer.sh status
+$ZOOKEEPER_HOME/bin/zkServer.sh stop
+$ZOOKEEPER_HOME/bin/zkServer.sh restart
 
 

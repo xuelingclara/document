@@ -1,15 +1,60 @@
 yum install libevent-devel
-cd /usr/local/src
+cd /tmp
 wget -N http://www.memcached.org/files/memcached-1.4.17.tar.gz
 tar -zxf memcached-1.4.17.tar.gz
 cd memcached-1.4.17
-./configure --prefix=/usr/local/memcached
+./configure --prefix=/opt/memcached
 make && make install
 
-修改 ${同级目录}/memcached的参数
 
-cp ${同级目录}/memcached /etc/init.d/
+
+vi /etc/init.d/memcached
+#!/bin/sh
+# chkconfig: - 50 50
+# description: memcached
+# 以下要自己配置
+CMD=/opt/memcached/bin/memcached
+MEMORY=128
+USER=root
+HOST=192.168.19.204
+PORT=11211
+CONNECTION=256
+PID=/tmp/memcached.pid
+
+start() {
+	echo -n $"memcached starting... "  
+	$CMD -d -m $MEMORY -u $USER -l $HOST -p $PORT -c $CONNECTION -P $PID
+	echo
+}
+
+stop() {
+	echo -n $"memcached shutting down... "  
+	kill `cat $PID`
+	echo
+}
+
+case "$1" in
+	start)
+		start
+		;;
+	stop)
+		stop
+		;;
+	restart)
+		stop
+		start
+		;;
+	*)
+	echo $"Usage: $0 {start|stop|restart}"  
+	exit 1
+esac
+exit 0
+
+
+
 chmod +x /etc/init.d/memcached
 chkconfig --add /etc/init.d/memcached
 chkconfig --level 35 memcached on
 service memcached start
+
+chkconfig --level 35 iptables off

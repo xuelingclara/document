@@ -1,12 +1,21 @@
+#开机启动
+echo '/opt/tomcat/bin/startup.sh' >> /etc/rc.d/rc.local
+
+#环境变量
+echo 'export TOMCAT_HOME=/opt/tomcat' >> /etc/profile
+source /etc/profile
+
+#tomcat6安装
+cd /tmp
 wget -N http://archive.apache.org/dist/tomcat/tomcat-6/v6.0.36/bin/apache-tomcat-6.0.36.tar.gz
 tar -zxf apache-tomcat-6.0.36.tar.gz
-mv apache-tomcat-6.0.36 /usr/local/tomcat6
-echo '/usr/local/tomcat6/bin/startup.sh' >> /etc/rc.d/rc.local 
+mv ./apache-tomcat-6.0.36 $TOMCAT_HOME
 
-wget -N http://mirror.esocc.com/apache/tomcat/tomcat-7/v7.0.52/bin/apache-tomcat-7.0.52.tar.gz
+#tomcat7安装 
+cd /tmp
+wget -N http://archive.apache.org/dist/tomcat/tomcat-7/v7.0.52/bin/apache-tomcat-7.0.52.tar.gz
 tar -zxf apache-tomcat-7.0.52.tar.gz
-mv apache-tomcat-7.0.52 /usr/local/tomcat7
-echo '/usr/local/tomcat7/bin/startup.sh' >> /etc/rc.d/rc.local
+mv ./apache-tomcat-7.0.52 $TOMCAT_HOME
 
 server.xml
 <Host name="www.ezcom.biz" debug="0" appBase="/home/felix/webapp" unpackWARs="true" autoDeploy="true" xmlValidation="false" xmlNamespaceAware="false">
