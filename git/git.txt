@@ -1,0 +1,14 @@
+cd /tmp
+yum install zlib-devel
+wget -N https://www.kernel.org/pub/software/scm/git/git-1.8.3.tar.gz
+tar -zxf git-1.8.3.tar.gz
+cd git-1.8.3
+./configure prefix=/opt/git
+make && make install
+echo 'export PATH=$PATH:/opt/git/bin' >> /etc/profile
+source /etc/profile
+git --version
+
+
+#全局过滤
+git config --global core.excludesfile ~/.gitignore
