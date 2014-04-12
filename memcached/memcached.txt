@@ -7,7 +7,6 @@ cd memcached-1.4.17
 make && make install
 
 
-
 vi /etc/init.d/memcached
 #!/bin/sh
 # chkconfig: - 50 50

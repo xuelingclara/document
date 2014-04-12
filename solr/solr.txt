@@ -8,45 +8,47 @@ mkdir -p /opt/solr/webapps
 cd /opt/solr/webapps
 jar -xf /tmp/solr-4.2.1/example/webapps/solr.war
 
-	#lib
-	ln -s /opt/solr/webapps/WEB-INF/lib /opt/solr/lib
-
-	#conf
-	mkdir -p /opt/solr/conf/core0
-	#core0
-	cp /tmp/solr-4.2.1/example/multicore/core0/conf/* /opt/solr/conf/core0
-	java -cp .:/opt/solr/lib/* org.apache.solr.cloud.ZkCLI -cmd upconfig -zkhost 192.168.19.204:2181,192.168.19.205:2181,192.168.19.206:2181 -confdir /opt/solr/conf/core0 -confname core0 -solrhome /opt/solr/home
-	#core1
-	cp /tmp/solr-4.2.1/example/multicore/core0/conf/* /opt/solr/conf/core1
-	java -cp .:/opt/solr/lib/* org.apache.solr.cloud.ZkCLI -cmd upconfig -zkhost 192.168.19.204:2181,192.168.19.205:2181,192.168.19.206:2181 -confdir /opt/solr/conf/core1 -confname core1 -solrhome /opt/solr/home
-
 #home
 mkdir -p /opt/solr/home
 vi /opt/solr/home/solr.xml
 <?xml version="1.0" encoding="UTF-8" ?>
 <solr persistent="true">
-  <cores adminPath="/admin/cores" defaultCoreName="core0" host="${host:}" hostPort="${jetty.port:}" zkClientTimeout="${zkClientTimeout:15000}">
-    <core name="core0" instanceDir="/opt/solr/data/core0" shardid="shard1" collection="core0" collection.configName="core0"/>
+  <cores defaultCoreName="core0" adminPath="/admin/cores" zkClientTimeout="${zkClientTimeout:15000}" hostPort="${jetty.port:}">
+    <core loadOnStartup="true" shardid="shard1" instanceDir="/opt/solr/data/core0" name="core0" collection="core0"/>
     <core name="core1" instanceDir="/opt/solr/data/core1" shardid="shard1" collection="core1" collection.configName="core1"/>
   </cores>
 </solr>
 
 #solr加入tomcat
-mkdir -p $TOMCAT_HOME/conf/Catalina/localhost
-vi $TOMCAT_HOME/conf/Catalina/localhost/solr.xml
-<?xml version="1.0" encoding="UTF-8" ?> 
+mkdir -p /opt/tomcat/conf/Catalina/localhost
+vi /opt/tomcat/conf/Catalina/localhost/solr.xml
+<?xml version="1.0" encoding="UTF-8" ?>
 <Context docBase="/opt/solr/webapps" reloadable="true">
   <Environment name="solr/home" type="java.lang.String" value="/opt/solr/home" override="true" />
 </Context>
 
 #tomcat catelina.sh
-vi /$TOMCAT_HOME/bin/catalina.sh
+vi /opt/tomcat/bin/catalina.sh
 JAVA_OPTS="
  -Djetty.port=8080
- -DzkHost=192.168.19.204:2181,192.168.19.205:2181,192.168.19.206:2181
+ -DzkHost=192.168.0.201:2181,192.168.0.202:2181,192.168.0.203:2181
 "
 
+#master's lib
+ln -s /opt/solr/webapps/WEB-INF/lib /opt/solr/lib
+
+#master's conf
+mkdir -p /opt/solr/conf
+#core0
+mkdir -p /opt/solr/conf/core0
+cp /tmp/solr-4.2.1/example/multicore/core0/conf/* /opt/solr/conf/core0
+java -cp .:/opt/solr/lib/* org.apache.solr.cloud.ZkCLI -cmd upconfig -zkhost 192.168.0.201:2181,192.168.0.202:2181,192.168.0.203:2181 -confdir /opt/solr/conf/core0 -confname core0 -solrhome /opt/solr/home
+#core1
+mkdir -p /opt/solr/conf/core1
+cp /tmp/solr-4.2.1/example/multicore/core0/conf/* /opt/solr/conf/core1
+java -cp .:/opt/solr/lib/* org.apache.solr.cloud.ZkCLI -cmd upconfig -zkhost 192.168.0.201:2181,192.168.0.202:2181,192.168.0.203:2181 -confdir /opt/solr/conf/core1 -confname core1 -solrhome /opt/solr/home
+
 #reload
-curl "http://192.168.19.204:9999/solr/admin/cores?wt=json&action=RELOAD&core=core0"
-curl "http://192.168.19.205:9999/solr/admin/cores?wt=json&action=RELOAD&core=core0"
-curl "http://192.168.19.206:9999/solr/admin/cores?wt=json&action=RELOAD&core=core0"
+http://192.168.0.203:8080/solr/admin/cores?wt=json&action=RELOAD&core=core0
+#delete
+http://192.168.0.203:8080/solr/admin/collections?action=DELETE&name=core1
