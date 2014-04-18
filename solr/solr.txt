@@ -30,8 +30,44 @@ vi /opt/tomcat/conf/Catalina/localhost/solr.xml
 #tomcat catelina.sh
 vi /opt/tomcat/bin/catalina.sh
 JAVA_OPTS="
+ -Xmx6G 
+ -Xms6G 
+ -Xss256K
+ -Xmn2300M 
+ -XX:SurvivorRatio=5 
+ -XX:+UseParNewGC
+ -XX:PermSize=128M 
+ -XX:MaxPermSize=128M
+ -XX:MaxDirectMemorySize=768m 
+ -XX:LargePageSizeInBytes=128m
+ -XX:+DisableExplicitGC  
+ -XX:SoftRefLRUPolicyMSPerMB=0
+ -XX:+OptimizeStringConcat 
+ -XX:+UseFastAccessorMethods
+ -XX:CompileThreshold=100
+ -XX:+AggressiveOpts
+ -XX:+TieredCompilation
+ -XX:+DoEscapeAnalysis
+ -XX:+UseBiasedLocking
+ -XX:+EliminateLocks
+ -XX:BiasedLockingStartupDelay=0
+ -XX:+UseConcMarkSweepGC
+ -XX:CMSInitiatingOccupancyFraction=70
+ -XX:+UseCMSCompactAtFullCollection
+ -XX:CMSFullGCsBeforeCompaction=2
+ -XX:+CMSParallelRemarkEnabled
+ -XX:+UseCMSInitiatingOccupancyOnly
+ -XX:+CMSClassUnloadingEnabled
+ -XX:+CMSPermGenPrecleaningEnabled
+ -Dsun.net.inetaddr.ttl=0
+ -Dnetworkaddress.cache.ttl=30
+ -Djava.awt.headless=true
+ -DAllowManagedFieldsInDefaultFetchGroup=true 
+ -DAllowMediatedWriteInDefaultFetchGroup=true
+ 
  -Djetty.port=8080
  -DzkHost=192.168.0.201:2181,192.168.0.202:2181,192.168.0.203:2181
+ -DzkClientTimeout=15000
 "
 
 #master's lib
