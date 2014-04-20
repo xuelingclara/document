@@ -1,0 +1,11 @@
+cd /tmp
+wget -N http://www.sonatype.org/downloads/nexus-2.4.war #jdk7
+wget -N http://www.sonatype.org/downloads/nexus-2.3.1.war #jdk6
+mkdir -p /opt/nexus
+cd /opt/nexus
+jar xf /tmp/nexus-2.3.1.war
+
+vi /opt/tomcat/conf/Catalina/localhost/nexus.xml
+<?xml version="1.0" encoding="UTF-8" ?>
+<Context docBase="/opt/nexus" reloadable="true">
+</Context>
